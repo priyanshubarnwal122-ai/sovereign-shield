@@ -4,11 +4,10 @@
 ### **The Ultimate Offline Privacy Defense System**
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![Model](https://img.shields.io/badge/AI-TinyLlama%201.1B-green?style=for-the-badge)](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF)
-[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](https://streamlit.io/)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Transformers-yellow?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/)
 
-*Built for the Sovereign AI Challenge | 100% Local Inference | Zero Data Leakage*
+> **Built for Privacy-First AI Systems | 100% Local Inference | Zero Data Leakage**
 
 [View Demo](#) • [Report Bug](https://github.com/priyanshubarnwal122-ai/sovereign-shield/issues) • [Request Feature](https://github.com/priyanshubarnwal122-ai/sovereign-shield/issues)
 
@@ -18,42 +17,54 @@
 
 ## 📖 Overview
 
-**Sovereign Shield AI** is a military-grade, offline PII (Personally Identifiable Information) redaction engine designed to protect sensitive Indian data. 
+**Sovereign Shield AI** is an offline-first PII (Personally Identifiable Information) redaction engine designed to protect sensitive data—specifically optimized for the Indian context—without relying on cloud APIs.
 
-Unlike cloud-based solutions that risk data sovereignty by sending information to external servers, this application runs a quantized **Large Language Model (LLM)** entirely on your local CPU. It identifies and redacts entities like Names, Phone Numbers, Aadhaar, and PAN cards in real-time without ever connecting to the internet.
+In an era where data privacy laws (like the DPDP Act) are tightening, most redaction tools still send your sensitive data to external servers for processing. **Sovereign Shield changes that.** It runs entirely on your local machine using a custom BERT-based pipeline and rule-based logic.
+
+**No API calls. No telemetry. No cloud dependency.**. 
 
 ## ✨ Key Features
 
-* **🔒 Zero-Trust Offline Architecture**: The AI brain runs locally. No API keys, no cloud uploads, no data leakage.
-* **👻 Ghost Mode (Synthetic Data)**: Instead of just blacking out text, the AI generates realistic *synthetic* Indian identities to replace sensitive data, allowing developers to test systems safely.
-* **⚔️ Military-Grade Wipe**: Complete removal of all proper nouns, dates, and locations for maximum security.
-* **💻 Cyberpunk Terminal UI**: A custom-styled "Hacker Mode" interface with real-time telemetry (Processing Speed, Character Count) and neon visuals.
-* **🇮🇳 Hinglish Support**: Optimized prompts to handle mixed Hindi-English text often found in Indian banking and chat logs.
+### 🔒 Zero-Trust Offline Architecture
+* **Fully Local Inference:** Powered by PyTorch and HuggingFace Transformers running on your hardware.
+* **Air-Gap Ready:** Can be deployed in high-security environments with no internet access.
+* **No API Keys:** Save costs and eliminate third-party risk.
+
+### 🇮🇳 Hinglish Support: 
+Sovereign Shield AI handles informal Indian text patterns including Hinglish (Hindi written in Roman script).
+
+* **Input**: `mera naam Rahul Sharma hai aur mera phone number 9876543210 hai`
+ * **Output**:`Name: [NAME] Phone: [PHONE]`
+
+The system combines NER and rule-based detection to process mixed Hindi-English text commonly found in banking complaints and chat logs.
+
+### 🟢 Standard Mode – Structured Redaction
+Designed for compliance workflows and document sanitization. It detects PII and replaces it with standardized tags.
+
+* **Input:** `My name is Rahul Sharma. Phone: 9876543210`
+* **Output:** `Name: [NAME] Phone: [PHONE]`
+
+### 👻 Ghost Mode – Synthetic Identity Replacement
+Instead of simply masking data (which ruins context for ML training), Ghost Mode generates **realistic synthetic Indian identities**. This maintains the semantic structure of the data while anonymizing the subject.
+
+* **Input:** `My name is Rahul Sharma. Call me at 9876543210.`
+* **Output:** `My name is Aarav Mehta. Call me at 7648293102.`
+
+### 🔴 Military Mode – Secure Wipe
+Designed for high-security workflows where data existence itself is a liability.
+* **Action:** Immediate null output and memory clearance.
+* **Result:** Maximum sanitization.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Core Framework**: Python 3.9+
-* **Interface**: Streamlit (with Custom CSS Injection)
-* **Inference Engine**: `ctransformers` (GGML/GGUF Library)
-* **Model**: TinyLlama-1.1B-Chat (Quantized to 4-bit for CPU efficiency)
-
----
-
-## 📥 Model Setup (Critical)
-
-> **Note regarding `.gitignore`**: To adhere to DevOps best practices and GitHub file size limits, the large model file (`model.gguf`, ~638MB) is **excluded** from this repository. You must download it manually.
-
-1.  **Download the Model**:
-    Go to Hugging Face and download **`tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf`**.
-    👉 [Direct Download Link](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf?download=true)
-
-2.  **Place the File**:
-    Move the downloaded file into the **root folder** of this project.
-
-3.  **Rename**:
-    Rename the file to exactly: `model.gguf`
+* **Language**: Python 3.9+
+* **UI Framework**: Streamlit
+* **LLM Framework**: HuggingFace Transformers
+* **NER Engine**: dslim/bert-base-NER
+* **Backend**: PyTorch
+* **Execution**: Fully Offline
 
 ---
 
@@ -62,7 +73,44 @@ Unlike cloud-based solutions that risk data sovereignty by sending information t
 Follow these steps to deploy the shield on your local machine.
 
 ### 1. Clone the Repository
-```bash
+```
 git clone [https://github.com/priyanshubarnwal122-ai/sovereign-shield.git](https://github.com/priyanshubarnwal122-ai/sovereign-shield.git)
 cd sovereign-shield
+```
 
+### 2. Create Virtual Environment
+```
+python -m venv .venv
+.\.venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+```
+pip install -r requirements.txt
+```
+
+### 4. Run the Application
+``` 
+streamlit run app.py
+```
+The application will launch in your browser.
+
+---
+
+## 🔐 Privacy Principles
+
+* **100% offline execution**
+* **No external API calls**
+* **No user data logging**
+* **Local model loading only**
+* **Cached resources using** `st.cache_resource`
+
+---
+
+## 🎯 Use Cases
+
+* **Legal document sanitization**
+* **Banking complaint redaction**
+* **Government data protection**
+* **Secure enterprise workflows**
+* **Synthetic data generation for testing**
