@@ -11,7 +11,7 @@
 
 > **Built for Privacy-First AI Systems | 100% Local Inference | Zero Data Leakage**
 
-[View Demo](#)
+[View Demo](https://youtu.be/4NT2ZYpHwHM?si=3nK6q4LqXgLFrWF6)
 
 </div>
 
