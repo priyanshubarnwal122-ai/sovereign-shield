@@ -6,10 +6,12 @@
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](https://streamlit.io/)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Transformers-yellow?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/)
+[![SmolifyAI](https://img.shields.io/badge/Built%20With-Smolify.AI-orange?style=for-the-badge)](https://smolify.ai/)
+
 
 > **Built for Privacy-First AI Systems | 100% Local Inference | Zero Data Leakage**
 
-[View Demo](#) • [Report Bug](https://github.com/priyanshubarnwal122-ai/sovereign-shield/issues) • [Request Feature](https://github.com/priyanshubarnwal122-ai/sovereign-shield/issues)
+[View Demo](#)
 
 </div>
 
